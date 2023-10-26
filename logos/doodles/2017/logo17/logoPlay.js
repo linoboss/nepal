@@ -2480,6 +2480,29 @@
         a.queue_.push(b);
         a.queueDirty_ = !0
     }
+      , Qf = function(a) {
+        if (a.stopped_)
+            a.doodle_EventLoop$isRunning_ = !1;
+        else {
+            a.doodle_EventLoop$isRunning_ = !0;
+            Pf(a);
+            a.queueDirty_ && (a.queue_.sort(function(a, b) {
+                return a.nextFrameTime == b.nextFrameTime ? b.MS_PER_EVENT - a.MS_PER_EVENT : a.nextFrameTime - b.nextFrameTime
+            }),
+            a.queueDirty_ = !1);
+            for (var b = 0, c = 0, e; e = a.queue_[c]; c++)
+                if (e.nextFrameTime <= a.curTick)
+                    Mf(e) && Nf(a, e),
+                    b++;
+                else
+                    break;
+            a.queue_.splice(0, b);
+            a.curTick++;
+            Yc(function() {
+                Qf(a)
+            })
+        }
+    }
       , Pf = function(a) {
         var b = (new Date).getTime();
         30 < a.curTick && a.lastTickStartTime_ && (b - a.lastTickStartTime_ >= 1.05 * a.msPerEvent ? a.tooSlowTicks_++ : a.tooSlowTicks_ >>= 1,
@@ -2489,7 +2512,7 @@
     };
     Kf.prototype.start = function() {
         this.stopped_ = !1;
-        this.doodle_EventLoop$isRunning_
+        this.doodle_EventLoop$isRunning_ || Qf(this)
     }
     ;
     Kf.prototype.disposeInternal = function() {
@@ -18310,7 +18333,7 @@
         c.push(N(document, "touchstart", null, e, !0))
     };
     var Zr = ['<xml>\n      <block type="logo17_run_code"\n             id="tutorial_start_block_id"\n             deletable="false"\n             movable="false"\n             x="10"\n             y="96">\n      </block>\n    </xml>', '<xml>\n      <block type="logo17_run_code"\n             id="tutorial_start_block_id"\n             deletable="false"\n             movable="false"\n             x="10"\n             y="96">\n      </block>\n    </xml>', '<xml>\n      <block type="logo17_run_code"\n             id="tutorial_start_block_id"\n             deletable="false"\n             movable="false"\n             x="20"\n             y="149">\n        <next>\n          <block type="logo17_move_forward"></block>\n        </next>\n      </block>\n    </xml>']
-      , $r = '<xml id="toolbox-simple" style="display: none">\n      <block type="logo17_for_loop">\n        <value name="TIMES">\n          <shadow type="math_whole_number">\n            <field name="NUM">4</field>\n          </shadow>\n        </value>\n      </block>\n      <block type="logo17_move_forward"></block>\n      <block type="logo17_turn_right"></block>\n      <block type="logo17_turn_left"></block>\n    </xml>;<xml id="toolbox-simple" style="display: none">\n      <block type="logo17_for_loop">\n        <value name="TIMES">\n          <shadow type="math_whole_number">\n            <field name="NUM">4</field>\n          </shadow>\n        </value>\n      </block>\n      <block type="logo17_move_forward"></block>\n      <block type="logo17_turn_right"></block>\n      <block type="logo17_turn_left"></block>\n    </xml>;<xml id="toolbox-simple" style="display: none">\n      <block type="logo17_for_loop">\n        <value name="TIMES">\n          <shadow type="math_whole_number">\n            <field name="NUM">4</field>\n          </shadow>\n        </value>\n      </block>\n      <block type="logo17_move_forward"></block>\n      <block type="logo17_turn_right"></block>\n      <block type="logo17_turn_left"></block>\n    </xml>;<xml id="toolbox-simple" style="display: none">\n      <block type="logo17_for_loop">\n        <value name="TIMES">\n          <shadow type="math_whole_number">\n            <field name="NUM">4</field>\n          </shadow>\n        </value>\n      </block>\n      <block type="logo17_move_forward"></block>\n      <block type="logo17_turn_right"></block>\n      <block type="logo17_turn_left"></block>\n    </xml>;<xml id="toolbox-simple" style="display: none">\n      <block type="logo17_for_loop">\n        <value name="TIMES">\n          <shadow type="math_whole_number">\n            <field name="NUM">4</field>\n          </shadow>\n        </value>\n      </block>\n      <block type="logo17_move_forward"></block>\n      <block type="logo17_turn_right"></block>\n      <block type="logo17_turn_left"></block>\n    </xml>;<xml id="toolbox-simple" style="display: none">\n      <block type="logo17_for_loop">\n        <value name="TIMES">\n          <shadow type="math_whole_number">\n            <field name="NUM">4</field>\n          </shadow>\n        </value>\n      </block>\n      <block type="logo17_move_forward"></block>\n      <block type="logo17_turn_right"></block>\n      <block type="logo17_turn_left"></block>\n    </xml>;<xml id="toolbox-simple" style="display: none">\n      <block type="logo17_for_loop">\n        <value name="TIMES">\n          <shadow type="math_whole_number">\n            <field name="NUM">4</field>\n          </shadow>\n        </value>\n      </block>\n      <block type="logo17_move_forward"></block>\n      <block type="logo17_turn_right"></block>\n      <block type="logo17_turn_left"></block>\n    </xml>'.split(";")
+      , $r = '<xml id="toolbox-simple" style="display: none">\n    <block type="logo17_move_forward"></block>\n  </xml>;<xml id="toolbox-simple" style="display: none">\n    <block type="logo17_move_forward"></block>\n    <block type="logo17_turn_right"></block>\n  </xml>;<xml id="toolbox-simple" style="display: none">\n    <block type="logo17_for_loop">\n      <value name="TIMES">\n        <shadow type="math_whole_number">\n          <field name="NUM">4</field>\n        </shadow>\n      </value>\n    </block>\n    <block type="logo17_move_forward"></block>\n    <block type="logo17_turn_right"></block>\n  </xml>;<xml id="toolbox-simple" style="display: none">\n      <block type="logo17_for_loop">\n        <value name="TIMES">\n          <shadow type="math_whole_number">\n            <field name="NUM">4</field>\n          </shadow>\n        </value>\n      </block>\n      <block type="logo17_move_forward"></block>\n      <block type="logo17_turn_right"></block>\n      <block type="logo17_turn_left"></block>\n    </xml>;<xml id="toolbox-simple" style="display: none">\n      <block type="logo17_for_loop">\n        <value name="TIMES">\n          <shadow type="math_whole_number">\n            <field name="NUM">4</field>\n          </shadow>\n        </value>\n      </block>\n      <block type="logo17_move_forward"></block>\n      <block type="logo17_turn_right"></block>\n      <block type="logo17_turn_left"></block>\n    </xml>;<xml id="toolbox-simple" style="display: none">\n      <block type="logo17_for_loop">\n        <value name="TIMES">\n          <shadow type="math_whole_number">\n            <field name="NUM">4</field>\n          </shadow>\n        </value>\n      </block>\n      <block type="logo17_move_forward"></block>\n      <block type="logo17_turn_right"></block>\n      <block type="logo17_turn_left"></block>\n    </xml>'.split(";")
       , as = ['<xml id="toolbox-simple" style="display: none">\n    <block\n        id="logo17_move_forward"\n        type="logo17_move_forward"></block>\n  </xml>', '<xml id="toolbox-simple" style="display: none">\n    <block\n        id="logo17_turn_right"\n        type="logo17_turn_right"></block>\n    <block\n        id="logo17_move_forward"\n        type="logo17_move_forward"></block>\n  </xml>', '<xml id="toolbox-simple" style="display: none">\n    <block\n        id="logo17_for_loop"\n        type="logo17_for_loop">\n      <value name="TIMES">\n        <shadow type="math_whole_number">\n          <field name="NUM">2</field>\n        </shadow>\n      </value>\n    </block>\n    <block\n        id="logo17_move_forward"\n        type="logo17_move_forward"></block>\n  </xml>'];
     H.logo17_run_code = {
         json: {
@@ -28502,7 +28525,7 @@
         this.introOverlay_ && !this.introOverlay_.module$exports$logo17$Scene_prototype$isFinished() || Z(this.gameUi_, !0);
         Iq(this.workspace_);
         this.module$exports$logo17$CodingScene$playButton_.classList.remove("hpofexecuting");
-        this.blocklyFooter_.style.height = "84px";
+        this.blocklyFooter_.style.height = null != this.module$exports$logo17$CodingScene$puzzleIndex && 2 > this.module$exports$logo17$CodingScene$puzzleIndex ? "64px" : "84px";
         ft(this.module$exports$logo17$CodingScene$camera_, this.module$exports$logo17$CodingScene$puzzle_.module$exports$logo17$Puzzle$bound);
         this.eventHandler.listen(this.module$exports$logo17$CodingScene$blocklyContainer_, "click", this.blocklyContainerListener_);
         this.eventHandler.listen(this.module$exports$logo17$CodingScene$playButton_, "click", this.module$exports$logo17$CodingScene$playButtonListener_);
@@ -29260,7 +29283,7 @@
             );
             Promise.all([e, f]).then(function() {
                 a && b && c && (ev = new $u(a,b,c),
-                ev.start());
+                ev.start())
             }, function() {
                 throw Error("Y");
             })
