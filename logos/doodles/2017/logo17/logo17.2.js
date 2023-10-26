@@ -5624,7 +5624,7 @@
     xa(yh);
     var zh = 1E3 / 60
       , Ah = window.google && window.google.doodle && window.google.doodle.isDemoHtml ? "" : "/logos/2017/logo17/"
-      , Bh = "L6.json".split(" ")
+      , Bh = "L7.json".split(" ")
       , Ch = [[2, 3], [4], [5, 6], [7, 8, 9], [10, 6, 8], [11, 3, 9]]
       , Dh = [2, 5, 4, 7, 6, 6]
       , Eh = ["T1.json", "T2.json", "T3.json"];
