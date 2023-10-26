@@ -2480,29 +2480,6 @@
         a.queue_.push(b);
         a.queueDirty_ = !0
     }
-      , Qf = function(a) {
-        if (a.stopped_)
-            a.doodle_EventLoop$isRunning_ = !1;
-        else {
-            a.doodle_EventLoop$isRunning_ = !0;
-            Pf(a);
-            a.queueDirty_ && (a.queue_.sort(function(a, b) {
-                return a.nextFrameTime == b.nextFrameTime ? b.MS_PER_EVENT - a.MS_PER_EVENT : a.nextFrameTime - b.nextFrameTime
-            }),
-            a.queueDirty_ = !1);
-            for (var b = 0, c = 0, e; e = a.queue_[c]; c++)
-                if (e.nextFrameTime <= a.curTick)
-                    Mf(e) && Nf(a, e),
-                    b++;
-                else
-                    break;
-            a.queue_.splice(0, b);
-            a.curTick++;
-            Yc(function() {
-                Qf(a)
-            })
-        }
-    }
       , Pf = function(a) {
         var b = (new Date).getTime();
         30 < a.curTick && a.lastTickStartTime_ && (b - a.lastTickStartTime_ >= 1.05 * a.msPerEvent ? a.tooSlowTicks_++ : a.tooSlowTicks_ >>= 1,
@@ -2512,7 +2489,7 @@
     };
     Kf.prototype.start = function() {
         this.stopped_ = !1;
-        this.doodle_EventLoop$isRunning_ || Qf(this)
+        this.doodle_EventLoop$isRunning_
     }
     ;
     Kf.prototype.disposeInternal = function() {
@@ -5624,7 +5601,7 @@
     xa(yh);
     var zh = 1E3 / 60
       , Ah = window.google && window.google.doodle && window.google.doodle.isDemoHtml ? "" : "/logos/2017/logo17/"
-      , Bh = "L7.json".split(" ")
+      , Bh = "L1.json L1.json L1.json L1.json L1.json L1.json".split(" ")
       , Ch = [[2, 3], [4], [5, 6], [7, 8, 9], [10, 6, 8], [11, 3, 9]]
       , Dh = [2, 5, 4, 7, 6, 6]
       , Eh = ["T1.json", "T2.json", "T3.json"];
@@ -28290,7 +28267,7 @@
       , nu = Ss(function(a) {
         var b = [{
             workspaceXml: Zr[0],
-            toolboxXml: as[0],
+            toolboxXml: as[2],
             puzzleData: Ps[0],
             workspaceScale: 1,
             screens: [new su("<div><h1>" + y("Tutorial 1 - Title") + "</h1><p>" + y("Tutorial 1 - Intro") + "</p></div>",{
@@ -29282,7 +29259,7 @@
             );
             Promise.all([e, f]).then(function() {
                 a && b && c && (ev = new $u(a,b,c),
-                ev.start())
+                ev.start());
             }, function() {
                 throw Error("Y");
             })
