@@ -5601,7 +5601,7 @@
     xa(yh);
     var zh = 1E3 / 60
       , Ah = window.google && window.google.doodle && window.google.doodle.isDemoHtml ? "" : "/logos/2017/logo17/"
-      , Bh = "L1.json L1.json L1.json L1.json L1.json L1.json L1.json".split(" ")
+      , Bh = "L7.json L6.json L5.json L4.json L3.json L2.json L1.json".split(" ")
       , Ch = [[2, 3], [4], [5, 6], [7, 8, 9], [10, 6, 8], [11, 3, 9], [11, 3, 9]]
       , Dh = [2, 5, 4, 7, 6, 6, 6]
       , Eh = ["T1.json", "T2.json", "T3.json"];
@@ -28445,6 +28445,7 @@
         this.module$exports$logo17$CodingScene$camera_ = new dt;
         F(this, this.module$exports$logo17$CodingScene$camera_);
         this.module$exports$logo17$CodingScene$puzzle_ = new lu(this.module$exports$logo17$CodingScene$tiledMap_,this.eventBus);
+        console.log(Os);
         F(this.module$exports$logo17$CodingScene$camera_, this.module$exports$logo17$CodingScene$puzzle_);
         this.module$exports$logo17$CodingScene$abstractSyntaxTree_ = new Ks(this.workspace_,this.module$exports$logo17$CodingScene$puzzle_.module$exports$logo17$Puzzle$player_);
         F(this, this.module$exports$logo17$CodingScene$abstractSyntaxTree_);
@@ -28529,7 +28530,7 @@
     }
     ;
     d.getNextScene = function() {
-        return null != this.module$exports$logo17$CodingScene$puzzleIndex ? this.module$exports$logo17$CodingScene$puzzleIndex < Os.length - 1 ? new Gt(this.eventHandler,this.sceneNavigator,this.module$exports$logo17$CodingScene$puzzleIndex + 1) : new Pt(this.eventHandler,this.sceneNavigator) : null
+        return null != this.module$exports$logo17$CodingScene$puzzleIndex ? this.module$exports$logo17$CodingScene$puzzleIndex < Os.length - 1 ? new Gt(this.eventHandler,this.sceneNavigator,this.module$exports$logo17$CodingScene$puzzleIndex) : new Pt(this.eventHandler,this.sceneNavigator) : null
     }
     ;
     var uu = ["mousedown", "touchstart", "mouseup", "touchend", "mouseout"];
@@ -28753,7 +28754,7 @@
     }
     ;
     d.getNextScene = function() {
-        return new tu(this.eventHandler,this.sceneNavigator,this.puzzleIndex_,this.module$exports$logo17$LoadingScene$showIntroOverlay_)
+        return new tu(this.eventHandler,this.sceneNavigator,this.puzzleIndex_, false)
     }
     ;
     var Iu = function(a) {
