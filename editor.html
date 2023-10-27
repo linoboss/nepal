@@ -5,21 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         /* Define the styles for the square grid */
+        body {
+            display: flex;
+            justify-content: center; /* Horizontally center the content */
+            align-items: center; /* Vertically center the content */
+            height: 100vh; 
+        }
         .grid-container {
             display: grid;
             grid-template-columns: repeat(10, 1fr); /* Create 10 columns */
             grid-template-rows: repeat(10, 1fr);    /* Create 10 rows */
-            width: 300px; /* Adjust the width of the grid as needed */
-            height: 300px; /* Adjust the height of the grid as needed */
-            border: 2px solid #000; /* Add a border for visualization */
+            width: 500px; /* Adjust the width of the grid as needed */
+            height: 500px; /* Adjust the height of the grid as needed */
+            border: 1px solid #000; /* Add a border for visualization */
             direction: rtl;
             grid-auto-flow: column;
         }
-        
         .grid-item {
             border: 1px solid #999; /* Add a border to individual squares */
         }
-        
         /* Adjust the size and style of the squares as needed */
         /* For equal-sized squares, set width and height to 100% */
         .grid-item {
@@ -39,59 +43,72 @@
             transition: background-color 0.5s; /* Add a smooth color transition */
         }
         .dropdown {
-            position: relative;
-            display: inline-block;
+            display:flex
         }
-
         /* Style for the dropdown button */
         .dropdown-button {
             background-color: #3498db;
             color: #fff;
             padding: 10px;
-            cursor: pointer;
         }
-
-        /* Style for the dropdown content */
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        /* Style for dropdown items */
-        .dropdown-item {
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            color: #333;
-        }
-
         /* Change the background color of dropdown items when hovered */
-        .dropdown-item:hover {
-            background-color: #ddd;
-        }
 
         /* Show the dropdown content when hovering or clicking on the button */
         .dropdown:hover .dropdown-content {
             display: block;
         }
+        .generate-btn {
+            width: 504px;
+            height: 70px;
+            font-size: 30px;
+            background-color: black;
+            border-radius: 0;
+            border: 0;
+            color: white;
+            font-weight: bold;
+        }
+        .button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.white-button {
+    background-color: #fff;
+    color: #000;
+}
+
+.black-button {
+    background-color: #000;
+    color: #fff;
+}
+
+.purple-button {
+    background-color: #800080;
+    color: #fff;
+}
+
+.green-button {
+    background-color: #008000;
+    color: #fff;
+}
+
     </style>
 </head>
 <body>
     <div class="div">
         <div class="dropdown">
-            <button class="dropdown-button">Dropdown</button>
             <div class="dropdown-content">
-                <a href="#" onclick="dropdownBtnClick('player')">Player</a>
-                <a href="#" onclick="dropdownBtnClick('purple')">Purple</a>
-                <a href="#" onclick="dropdownBtnClick('green')">Green</a>
+                <button class="button white-button" id="playerbtn">Player</button>
+                <button class="button white-button" id="purplebtn">Purple</button>
+                <button class="button white-button" id="greenbtn">Green</button>
+                <button class="button white-button" id="clearbtn">Clear</button>
             </div>
         </div>
         <div class="grid-container"></div>
-        <button onclick="generateBtnClick()">Generate</button>
+        <button onclick="generateBtnClick()" class="generate-btn">Generate</button>
     </div>
     <script src="editor.js"></script>
 </body>
