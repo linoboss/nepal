@@ -42,6 +42,28 @@ function dropdownBtnClick(btn){
     }
 }
 
+function prepareData(){
+    let data1 = [];
+    let data2 = [];
+    for (let i=0; i < data.length; i++){
+        const v = data[i];
+        if (v === "player"){
+            data1.push(25);
+            data2.push(10);
+        } else if (data[i] === 0) {
+            data1.push(0);
+            data2.push(0);
+        } else if (v === 'green') {   
+            data1.push(25);
+            data2.push(0);
+        } else {
+            data1.push(25);
+            data2.push(67);
+        }
+    }
+    return { data1, data2 }
+}
+
 function generateBtnClick(){
     // Make the POST request using the fetch API
     // Define the URL of the API or endpoint you want to send the POST request to
@@ -57,7 +79,7 @@ function generateBtnClick(){
     const requestOptions = {
         method: 'POST',
         headers: headers,
-        body: JSON.stringify({data, player})
+        body: JSON.stringify(prepareData())
     };
     fetch(apiUrl, requestOptions)
     .then(response => {

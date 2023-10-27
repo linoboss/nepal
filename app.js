@@ -23,7 +23,7 @@ const server = http.createServer((req, res) => {
 
             let requestJson = JSON.parse(requestData)
 
-            save(requestJson.data, requestJson.player, "example.json")
+            save(requestJson, "example.json")
 
             // Respond to the client
             res.writeHead(200, { 'Content-Type': 'text/plain' });
@@ -54,9 +54,9 @@ server.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
 
-function save(data, player, filePath){
+function save(data, filePath){
     // The content you want to write to the file
-    const content = to_json(data, player);
+    const content = to_json(data);
 
     // Write the content to the file
     fs.writeFile(filePath, content, (err) => {
@@ -68,24 +68,9 @@ function save(data, player, filePath){
     });
 }
 
-function to_json(data, player){
-    let data1 = data
-    let data2 = []
-    for (let i=0; i < data.length; i++){
-        const v = data[i];
-        if (v === "player"){
-            data2.push(10);
-            data[i] = 25
-        } else if (data[i] === 0) {
-            data2.push(0);
-        } else if (v === 'green') {   
-            data[i] = 25;
-            data2.push(0);
-        } else {
-            data[i] = 25;
-            data2.push(67);
-        }
-    }
+function to_json(data){
+    let data1 = data.data1
+    let data2 = data.data2
 
     const jsonContent = JSON.parse(fs.readFileSync('template.json').toString());
     const i1 = jsonContent.layers.findIndex(({ type }) => "tilelayer" === type);
